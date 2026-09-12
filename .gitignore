@@ -2,6 +2,7 @@ node_modules/
 .dsh-smoke/
 .github-install-smoke/
 .release-smoke/
+.release-checksum/
 *.tgz
 coverage/
 .DS_Store

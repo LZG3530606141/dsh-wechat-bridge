@@ -1,5 +1,9 @@
 # dsh-wechat-bridge
 
+[![CI](https://github.com/LZG3530606141/dsh-wechat-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/LZG3530606141/dsh-wechat-bridge/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/LZG3530606141/dsh-wechat-bridge)](https://github.com/LZG3530606141/dsh-wechat-bridge/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 [中文](#中文) · [English](#english)
 
 A standalone DeepSeek Harness bundle that connects a local DSH process to the WeChat iLink bot channel. It includes text and transcribed voice input, DSH conversation/session integration, user-question and reply synchronization, an SSE control API, encrypted file uploads, and the `dsh-wechat` CLI.
@@ -36,7 +40,7 @@ dsh plugin --profile <你的-profile> add "github:LZG3530606141/dsh-wechat-bridg
 dsh plugin --profile <你的-profile> add "github:LZG3530606141/dsh-wechat-bridge#b16e63a"
 ```
 
-安装后启动同一 profile。包通过 `package.json` 的 `dsh.bundle.patch` 声明 `cordis.patch.yml`，DSH 会启用其 bundle patch。示例 patch 会插入：
+Release 页面同时提供 `lzg3530606141-dsh-wechat-bridge-0.1.0.tgz.sha256`，可在下载 tarball 后校验文件完整性。安装后启动同一 profile。包通过 `package.json` 的 `dsh.bundle.patch` 声明 `cordis.patch.yml`，DSH 会启用其 bundle patch。示例 patch 会插入：
 
 ```yaml
 - insert:
@@ -140,7 +144,7 @@ Install the tagged release into the DSH profile you intend to run:
 dsh plugin --profile <your-profile> add "github:LZG3530606141/dsh-wechat-bridge#v0.1.0"
 ```
 
-For the exact source revision verified by this repository, use `#b16e63a` instead of the tag. Start that same profile after installation. The package declares its bundle patch through `dsh.bundle.patch`. The shipped patch binds `127.0.0.1:8848`, leaves the default session and control token blank, denies unauthenticated remote control, and stores runtime state under `$DSH_HOME/wechat-bridge`.
+For the exact source revision verified by this repository, use `#b16e63a` instead of the tag. The Release page also provides `lzg3530606141-dsh-wechat-bridge-0.1.0.tgz.sha256` for tarball integrity verification. Start that same profile after installation. The package declares its bundle patch through `dsh.bundle.patch`. The shipped patch binds `127.0.0.1:8848`, leaves the default session and control token blank, denies unauthenticated remote control, and stores runtime state under `$DSH_HOME/wechat-bridge`.
 
 The state directory is sensitive: it may hold login credentials, delivery context, an outbox, and logs. Never commit or publish it. Narrow `fileSendRoots` before enabling file delivery in a multi-user environment.
 
