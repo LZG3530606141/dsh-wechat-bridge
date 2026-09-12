@@ -22,7 +22,21 @@ A standalone DeepSeek Harness bundle that connects a local DSH process to the We
 
 ### 安装与启用
 
-需要 Node.js 20+ 与兼容 `0.1.5-rc.1` 的 DeepSeek Harness。将此包安装到 DSH 能解析的项目或配置环境后，启用其 bundle patch；包通过 `package.json` 的 `dsh.bundle.patch` 声明 `cordis.patch.yml`。示例 patch 会插入：
+需要 Node.js 20+ 与兼容 `0.1.5-rc.1` 的 DeepSeek Harness。由于 GitHub 上存在多个同名项目，请使用完整仓库名 **`LZG3530606141/dsh-wechat-bridge`** 核对作者；在插件市场中可搜索 **`LZG3530606141`**、**`dsh-wechat-bridge`**、**`WeChat iLink`** 或 **`微信 iLink`**。
+
+推荐从 GitHub Release 标签安装到指定 DSH profile：
+
+```powershell
+dsh plugin --profile <你的-profile> add "github:LZG3530606141/dsh-wechat-bridge#v0.1.0"
+```
+
+如需锁定已经验证的源码提交，可使用：
+
+```powershell
+dsh plugin --profile <你的-profile> add "github:LZG3530606141/dsh-wechat-bridge#b16e63a"
+```
+
+安装后启动同一 profile。包通过 `package.json` 的 `dsh.bundle.patch` 声明 `cordis.patch.yml`，DSH 会启用其 bundle patch。示例 patch 会插入：
 
 ```yaml
 - insert:
@@ -118,7 +132,15 @@ CLI 环境变量：
 
 ### Install and configure
 
-Install the package where DSH can resolve it and enable the bundle patch declared by `dsh.bundle.patch`. The shipped patch binds `127.0.0.1:8848`, leaves the default session and control token blank, denies unauthenticated remote control, and stores runtime state under `$DSH_HOME/wechat-bridge`.
+GitHub contains multiple repositories with the same short name. Verify the full repository identity **`LZG3530606141/dsh-wechat-bridge`**; marketplace searches may use **`LZG3530606141`**, **`dsh-wechat-bridge`**, **`WeChat iLink`**, or **`微信 iLink`**.
+
+Install the tagged release into the DSH profile you intend to run:
+
+```powershell
+dsh plugin --profile <your-profile> add "github:LZG3530606141/dsh-wechat-bridge#v0.1.0"
+```
+
+For the exact source revision verified by this repository, use `#b16e63a` instead of the tag. Start that same profile after installation. The package declares its bundle patch through `dsh.bundle.patch`. The shipped patch binds `127.0.0.1:8848`, leaves the default session and control token blank, denies unauthenticated remote control, and stores runtime state under `$DSH_HOME/wechat-bridge`.
 
 The state directory is sensitive: it may hold login credentials, delivery context, an outbox, and logs. Never commit or publish it. Narrow `fileSendRoots` before enabling file delivery in a multi-user environment.
 

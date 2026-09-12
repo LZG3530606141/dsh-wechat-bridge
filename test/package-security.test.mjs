@@ -23,7 +23,12 @@ const SENSITIVE_NAMES = [
 function walk(dir) {
   const out = [];
   for (const item of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (item.name === 'node_modules' || item.name === '.git' || item.name === '.dsh-smoke') continue;
+    if (
+      item.name === 'node_modules' ||
+      item.name === '.git' ||
+      item.name === '.dsh-smoke' ||
+      item.name === '.github-install-smoke'
+    ) continue;
     const target = path.join(dir, item.name);
     if (item.isDirectory()) out.push(...walk(target));
     else out.push(target);
