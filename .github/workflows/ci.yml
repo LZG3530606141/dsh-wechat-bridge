@@ -22,7 +22,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: npm
       - run: node --check src/index.mjs
       - run: node --check src/wechat-media.mjs
       - run: node --check bin/dsh-wechat.mjs
