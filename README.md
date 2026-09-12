@@ -24,6 +24,21 @@ A standalone DeepSeek Harness bundle that connects a local DSH process to the We
 
 本仓库不包含桌面微信自动化，也不会打包任何令牌、二维码链接、日志、会话标识或运行状态。
 
+### 适用场景与特点
+
+这是面向**终端和自动化工作流**的微信远程桥接，而不是带 Web 设置面板的通用 IM 聚合器。它适合希望从微信继续控制本机 DSH，同时通过脚本或 CLI 观察状态、切换会话和处理待发消息的用户。
+
+相较于仅提供聊天转发的实现，本插件重点提供以下组合：
+
+- 独立 `dsh-wechat` CLI 与 SSE 控制 API，可用于监听、诊断和脚本集成
+- DSH 用户问题与回复摘要同步，电脑端和微信端可以协同处理
+- relay/outbox 模式，在微信上下文暂不可用时保留待发消息
+- 受目录、大小和可信 CDN 限制的 AES 加密文件发送
+- 仅回环监听、默认拒绝无令牌远程控制等安全默认值
+- 零第三方运行时依赖，并在 Node.js 20、22、24 上持续测试
+
+如果需要图片/音视频双向收发、微信内完整斜杠命令或图形化设置面板，请在 DSH 插件市场比较其他微信插件后按需求选择。本项目不声称是腾讯或微信官方插件。
+
 ### 安装与启用
 
 需要 Node.js 20+ 与兼容 `0.1.5-rc.1` 的 DeepSeek Harness。由于 GitHub 上存在多个同名项目，请使用完整仓库名 **`LZG3530606141/dsh-wechat-bridge`** 核对作者；在插件市场中可搜索 **`LZG3530606141`**、**`dsh-wechat-bridge`**、**`WeChat iLink`** 或 **`微信 iLink`**。
@@ -133,6 +148,12 @@ CLI 环境变量：
 - **远程请求 403**：本机使用回环地址；远程访问必须提供与配置一致的 `DSH_WECHAT_TOKEN`。
 
 ## English
+
+### Positioning
+
+This plugin is a **terminal- and automation-oriented** WeChat remote bridge rather than a general multi-IM gateway with a Web settings panel. Its distinct combination is the standalone `dsh-wechat` CLI, an SSE control API, synchronized DSH questions and reply summaries, relay/outbox delivery, constrained encrypted file sending, secure loopback defaults, and zero third-party runtime dependencies. CI covers Node.js 20, 22, and 24.
+
+Choose another marketplace plugin if your primary requirement is full bidirectional image/audio/video handling, a comprehensive in-WeChat slash-command surface, or GUI-only setup. This project is an independent community integration and does not claim Tencent or WeChat endorsement.
 
 ### Install and configure
 
