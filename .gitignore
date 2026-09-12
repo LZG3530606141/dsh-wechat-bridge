@@ -1,5 +1,6 @@
 node_modules/
 .dsh-smoke/
+.github-install-smoke/
 *.tgz
 coverage/
 .DS_Store
