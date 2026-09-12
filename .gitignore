@@ -1,0 +1,24 @@
+node_modules/
+.dsh-smoke/
+*.tgz
+coverage/
+.DS_Store
+Thumbs.db
+
+# Runtime state and secrets must never enter this repository.
+wechat-bridge/
+state/
+*.log
+wechat-token.json
+wechat-cursor.txt
+wechat-seen.json
+wechat-qr.txt
+wechat-context.txt
+wechat-session.txt
+wechat-relay.txt
+wechat-outbox.json
+
+# Local environment files.
+.env
+.env.*
+!.env.example

@@ -1,0 +1,12 @@
+# Adds the WeChat bridge to an existing DSH profile.
+- insert:
+    - id: dsh-wechat-bridge
+      name: '@lzg3530606141/dsh-wechat-bridge'
+      inject: [agents, userQuestions]
+      config:
+        host: 127.0.0.1
+        port: 8848
+        session: ''
+        controlToken: ''
+        controlAllowRemote: false
+        stateDir: !!js dshHomePath('wechat-bridge')

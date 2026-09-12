@@ -1,0 +1,54 @@
+{
+  "name": "@lzg3530606141/dsh-wechat-bridge",
+  "version": "0.1.0",
+  "description": "A local WeChat iLink channel and control CLI for DeepSeek Harness",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzg3530606141/dsh-wechat-bridge.git"
+  },
+  "homepage": "https://github.com/lzg3530606141/dsh-wechat-bridge#readme",
+  "bugs": {
+    "url": "https://github.com/lzg3530606141/dsh-wechat-bridge/issues"
+  },
+  "type": "module",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./wechat-media": "./src/wechat-media.mjs",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "dsh-wechat": "./bin/dsh-wechat.mjs"
+  },
+  "files": [
+    "bin/dsh-wechat.mjs",
+    "src/index.mjs",
+    "src/wechat-media.mjs",
+    "cordis.patch.yml",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.1.5-rc.1 <0.2.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "wechat",
+    "ilink"
+  ],
+  "license": "MIT"
+}
